@@ -1,0 +1,31 @@
+<h1>Listing writings</h1>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Body</th>
+    <th>Global r</th>
+    <th>Friends r</th>
+    <th>Author</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @writings.each do |writing| %>
+  <tr>
+    <td><%= writing.title %></td>
+    <td><%= writing.body %></td>
+    <td><%= writing.global_r %></td>
+    <td><%= writing.friends_r %></td>
+    <td><%= writing.author_id %></td>
+    <td><%= link_to 'Show', writing %></td>
+    <td><%= link_to 'Edit', edit_writing_path(writing) %></td>
+    <td><%= link_to 'Destroy', writing, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Writing', new_writing_path %>

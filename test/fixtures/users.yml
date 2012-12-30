@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  username: MyString
+  pass: MyString
+  string: 
+  boolean: 
+
+two:
+  name: MyString
+  username: MyString
+  pass: MyString
+  string: 
+  boolean: 
