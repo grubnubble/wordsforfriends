@@ -1,5 +1,6 @@
 <h1>This is Matt's poetry application.</h1>
 
+<h2>User Menu</h2>
 <ul>
   <li><%= link_to 'Sign up', signup_path, class: "btn btn-large btn-primary" %></li>
   <% if current_user %>
@@ -9,4 +10,11 @@
   <% end %>
 </ul>
 
-<% link_to image_tag( 'rails.png', alt: 'Powered by Rails'), 'http://rubyonrails.org' %>
+<h2>Random Poem</h2>
+
+<h3><%= @apoem.title %></h3>
+<h4>by <%= User.find( @apoem.author_id).name %></h4>
+<p><%= @apoem.body %></p>
+
+<h2>Static Pages Link</h2>
+

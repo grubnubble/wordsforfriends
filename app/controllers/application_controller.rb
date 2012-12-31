@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   helper_method :current_user
 
   def index
+    @apoem = Writing.offset( rand( Writing.count)).first
     respond_to do |format|
       format.html #index.html.erb
     end
