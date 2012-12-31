@@ -22,4 +22,6 @@ class User < ActiveRecord::Base
       :message => 'has to be between 3 and 32 characters' }
 
   has_many :writings, :dependent => :destroy
+  has_many :friendships
+  has_many :friends, :through => :friendships
 end
