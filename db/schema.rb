@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121231021321) do
+ActiveRecord::Schema.define(:version => 20121231030931) do
 
   create_table "friendships", :force => true do |t|
     t.integer  "user1_id"
@@ -32,9 +32,10 @@ ActiveRecord::Schema.define(:version => 20121231021321) do
     t.string   "username"
     t.string   "pass"
     t.string   "email"
-    t.boolean  "active",     :default => false
-    t.datetime "created_at",                    :null => false
-    t.datetime "updated_at",                    :null => false
+    t.boolean  "active",        :default => false
+    t.datetime "created_at",                       :null => false
+    t.datetime "updated_at",                       :null => false
+    t.string   "password_salt"
   end
 
   create_table "writing_tag_joins", :force => true do |t|

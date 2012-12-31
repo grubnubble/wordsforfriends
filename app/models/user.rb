@@ -1,7 +1,14 @@
-class User < ActiveRecord::Base
-  attr_accessible :name, :email, :username
+require 'bcrypt'
 
-  validates :name, :pass, :email, :username, :presence => true 
+class User < ActiveRecord::Base
+  include BCrypt
+
+  attr_accessible :name, :email, :username, :password, :password_confirmation
+  attr_accessor :password
+
+  before_save :encrypt_pass
+
+  validates :name, :email, :username, :presence => true 
 
   validates :name,
     :length => { :maximum => 256,
@@ -21,7 +28,17 @@ class User < ActiveRecord::Base
     :length => { :in => 3..32,
       :message => 'has to be between 3 and 32 characters' }
 
+  validates_confirmation_of :password,
+    :message => 'should match confirmation'
+
   has_many :writings, :dependent => :destroy
   has_many :friendships
   has_many :friends, :through => :friendships
+
+  def encrypt_pass
+    if password.present?
+      self.password_salt = BCrypt::Engine.generate_salt
+      self.pass = BCrypt::Engine.hash_secret( password, password_salt)
+    end
+  end
 end

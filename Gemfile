@@ -25,7 +25,7 @@ gem 'jquery-rails'
 gem 'minitest' # fixing a ruby 1.9.3/fedora bug
 
 # To use ActiveModel has_secure_password
-gem 'bcrypt-ruby', '~> 3.0.0'
+gem 'bcrypt-ruby', '~> 3.0.0', :require => 'bcrypt'
 
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'

@@ -4,7 +4,6 @@ Poetry::Application.routes.draw do
   get "friendship/destroy"
 
   resources :writings
-
   resources :users
 
   # The priority is based upon order of creation:
@@ -14,7 +13,7 @@ Poetry::Application.routes.draw do
   #   match 'products/:id' => 'catalog#view'
   # Keep in mind you can assign values other than :controller and :action
   
-  match '/signup' => 'users#new'
+  match '/signup' => 'users#new', :as => 'signup'
 
   # Sample of named route:
   #   match 'products/:id/purchase' => 'catalog#purchase', :as => :purchase
