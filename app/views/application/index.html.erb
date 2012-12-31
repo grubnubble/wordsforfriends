@@ -8,6 +8,7 @@
   <% else %>
     <li><%= link_to 'Log in', login_path %></li>
   <% end %>
+  <li><%= link_to 'Write', 'writings/new' %></li>
 </ul>
 
 <h2>Latest Writings</h2>
@@ -16,7 +17,13 @@
   <% @latestwritings.each do |writing| %>
     <li>
       <%= link_to writing.title, writing %><br />
-      <%= User.find( writing.author_id).name %>
+      <%= 
+        if writing.author_id == 0 
+            'anonymous'
+        else
+            User.find( writing.author_id).name 
+        end
+      %>
     </li>
   <% end %>
 </ul>
@@ -24,7 +31,14 @@
 <h2>Random Writing</h2>
 
 <h3><%= @awriting.title %></h3>
-<h4>by <%= User.find( @awriting.author_id).name %></h4>
+<h4>by 
+  <%= 
+    if @awriting.author_id == 0
+      'anonymous'
+    else
+      User.find( @awriting.author_id).name
+    end
+  %>
 <p><%= @awriting.body %></p>
 
 <h2>Static Pages Link</h2>

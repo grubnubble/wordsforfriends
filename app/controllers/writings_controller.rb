@@ -41,6 +41,11 @@ class WritingsController < ApplicationController
   # POST /writings.json
   def create
     @writing = Writing.new(params[:writing])
+    if current_user
+      @writing.author_id = current_user.id
+    else
+      @writing.author_id = 0
+    end
 
     respond_to do |format|
       if @writing.save
