@@ -5,8 +5,8 @@
     <th>Name</th>
     <th>Username</th>
     <th>Pass</th>
-    <th>String</th>
-    <th>Boolean</th>
+    <th>Email</th>
+    <th>Active</th>
     <th></th>
     <th></th>
     <th></th>
@@ -17,8 +17,8 @@
     <td><%= user.name %></td>
     <td><%= user.username %></td>
     <td><%= user.pass %></td>
-    <td><%= user.string %></td>
-    <td><%= user.boolean %></td>
+    <td><%= user.email %></td>
+    <td><%= user.active %></td>
     <td><%= link_to 'Show', user %></td>
     <td><%= link_to 'Edit', edit_user_path(user) %></td>
     <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
