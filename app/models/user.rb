@@ -20,4 +20,6 @@ class User < ActiveRecord::Base
       :message => 'is taken' },
     :length => { :in => 3..32,
       :message => 'has to be between 3 and 32 characters' }
+
+  has_many :writings, :dependent => :destroy
 end
