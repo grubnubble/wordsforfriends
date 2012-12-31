@@ -4,7 +4,8 @@ class ApplicationController < ActionController::Base
   helper_method :current_user
 
   def index
-    @apoem = Writing.offset( rand( Writing.count)).first
+    @awriting = Writing.offset( rand( Writing.count)).first
+    @latestwritings = Writing.order( 'created_at DESC').limit( 10)
     respond_to do |format|
       format.html #index.html.erb
     end

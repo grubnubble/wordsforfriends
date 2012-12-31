@@ -10,11 +10,22 @@
   <% end %>
 </ul>
 
-<h2>Random Poem</h2>
+<h2>Latest Writings</h2>
 
-<h3><%= @apoem.title %></h3>
-<h4>by <%= User.find( @apoem.author_id).name %></h4>
-<p><%= @apoem.body %></p>
+<ul>
+  <% @latestwritings.each do |writing| %>
+    <li>
+      <%= link_to writing.title, writing %><br />
+      <%= User.find( writing.author_id).name %>
+    </li>
+  <% end %>
+</ul>
+
+<h2>Random Writing</h2>
+
+<h3><%= @awriting.title %></h3>
+<h4>by <%= User.find( @awriting.author_id).name %></h4>
+<p><%= @awriting.body %></p>
 
 <h2>Static Pages Link</h2>
 
