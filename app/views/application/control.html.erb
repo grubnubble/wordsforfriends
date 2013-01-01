@@ -4,14 +4,37 @@
 <% # ... profile stuff %>
 <%= link_to "Edit Profile" %>
 
-<h2>My friend requests</h2>
-<% # ... pending friend requests %>
+<h2>Outgoing friend requests</h2>
+<ul>
+<% @outgoingfriendrequests.each do |outfriendrequest| %>
+  <li>
+    <%= outfriendrequest.friend_id %>
+  </li>
+<% end %>
+</ul>
 
-<h2>Pending friend requests</h2>
-<% # ... pending friend requets %>
+<h2>Incoming friend requests</h2>
+<ul>
+<% @incomingfriendrequests.each do |infriendrequest| %>
+  <li>
+    <%= infriendrequest.user_id %>
+  </li>
+<% end %>
+</ul>
 
 <h2>My friends</h2>
-<% # ... friends  %>
+<ul>
+<% @realfriends.each do |realfriend| %>
+  <li>
+    <%= realfriend.id %>
+  </li>
+<% end %>
+</ul>
 
 <h2>My writings</h2>
-<% # ... posts %>
+<ul>
+<% @writings.each do |writing| %>
+  <li>
+    <%= writing.title %>
+  </li>
+<% end %>
