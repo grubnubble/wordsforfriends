@@ -4,7 +4,6 @@
   <tr>
     <th>Name</th>
     <th>Username</th>
-    <th>Pass</th>
     <th>Email</th>
     <th>Active</th>
     <th></th>
@@ -16,9 +15,11 @@
   <tr>
     <td><%= user.name %></td>
     <td><%= user.username %></td>
-    <td><%= user.pass %></td>
     <td><%= user.email %></td>
     <td><%= user.active %></td>
+    <% if current_user %>
+        <td><%= link_to 'Add as Friend', friendships_path( :friend_id => user), :method => :post %></td>
+    <% end %>
     <td><%= link_to 'Show', user %></td>
     <td><%= link_to 'Edit', edit_user_path(user) %></td>
     <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>

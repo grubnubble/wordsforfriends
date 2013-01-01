@@ -2,12 +2,10 @@ Poetry::Application.routes.draw do
 
   get "sessions/new"
 
-  get "friendship/create"
-  get "friendship/destroy"
-
   resources :writings
   resources :users
   resources :sessions
+  resources :friendships
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

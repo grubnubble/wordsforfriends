@@ -1,6 +1,6 @@
 class Friendship < ActiveRecord::Base
-  attr_accessible :user1_id, :user2_id
+  attr_accessible :friend_id
 
-  belongs_to :user1, :class_name => "User"
-  belongs_to :user2, :class_name => "User"
+  belongs_to :user
+  belongs_to :friend, :class_name => "user", :foreign_key => 'friend_id' 
 end
