@@ -33,9 +33,22 @@ class UsersController < ApplicationController
   end
 
   # GET /users/1/edit
-#  def edit
-#    @user = User.find(params[:id])
-#  end
+  def edit
+    @user = User.find(params[:id])
+  end
+
+  # GET /users/1/control
+  def control
+    if current_user
+      @user = User.find(session['user_id'])
+      respond_to do |format|
+        format.html # control.html.erb
+        format.json { render json: @user }
+      end
+    else
+      render :file => 'public/401.html', :status => :unathorized
+    end
+  end
 
   # POST /users
   # POST /users.json
