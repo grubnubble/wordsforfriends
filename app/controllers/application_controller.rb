@@ -13,11 +13,16 @@ class ApplicationController < ActionController::Base
 
   def control
     if current_user
+
       @user = current_user
+
       @outgoingfriendrequests = Friendship.where( :user_id => @user.id, :approved => false)
       @incomingfriendrequests = Friendship.where( :friend_id => @user.id, :approved => false)
-      @realfriends = Friendship.where( :user_id => @user.id, :approved => true)
+      @realfriends = Friendship.where( "(user_id = ? OR friend_id = ?) AND approved = ?",
+        @user.id, @user.id, true)
+
       @writings = Writing.where( :author_id => @user.id)
+
       respond_to do |format|
         format.html #control.html.erb
       end

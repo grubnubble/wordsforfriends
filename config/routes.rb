@@ -2,6 +2,9 @@ Poetry::Application.routes.draw do
 
   get "sessions/new"
 
+  # approving friends
+  match 'friendships/:id/approve' => 'friendships#approve', :as => :friendship
+
   resources :writings, :users, :sessions, :friendships
 
   # The priority is based upon order of creation:

@@ -17,7 +17,9 @@
 <ul>
 <% @incomingfriendrequests.each do |infriendrequest| %>
   <li>
-    <%= infriendrequest.user_id %>
+    <%= infriendrequest.user_id %><br />
+    <%= link_to "Approve", friendship_url( :id => infriendrequest.user_id) %> |
+    <%= link_to "Decline", friendships_url( :id => infriendrequest.user_id), :method => :delete %> 
   </li>
 <% end %>
 </ul>
@@ -26,7 +28,7 @@
 <ul>
 <% @realfriends.each do |realfriend| %>
   <li>
-    <%= realfriend.id %>
+    <%= realfriend.user_id %> and <%= realfriend.friend_id %>
   </li>
 <% end %>
 </ul>
