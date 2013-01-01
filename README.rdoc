@@ -1,3 +1,8 @@
+== Writingapp
+
+This is an application I'm writing for friends and family to share writings
+(prose, poetry) with eachother, either signed or anonymously.
+
 == Welcome to Rails
 
 Rails is a web-application framework that includes everything needed to create
