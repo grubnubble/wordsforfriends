@@ -5,7 +5,7 @@
   <li><%= link_to 'Sign up', signup_path, class: "btn btn-large btn-primary" %></li>
   <% if current_user %>
     <li><%= link_to 'Log out', logout_path %></li>
-    <li><%= link_to 'My page', me_path %></li>
+    <li><%= link_to 'My page', control_path %></li>
   <% else %>
     <li><%= link_to 'Log in', login_path %></li>
   <% end %>

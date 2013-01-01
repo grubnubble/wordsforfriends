@@ -11,6 +11,17 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def control
+    if current_user
+      @user = current_user
+      respond_to do |format|
+        format.html #control.html.erb
+      end
+    else
+      render :file => 'public/401.html', :status => :unathorized
+    end
+  end
+
   def current_user
     @current_user ||= User.find( session[:user_id]) if session[:user_id]
   end

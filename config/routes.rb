@@ -2,10 +2,7 @@ Poetry::Application.routes.draw do
 
   get "sessions/new"
 
-  resources :writings
-  resources :users
-  resources :sessions
-  resources :friendships
+  resources :writings, :users, :sessions, :friendships
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -17,6 +14,7 @@ Poetry::Application.routes.draw do
   match '/signup' => 'users#new', :as => 'signup'
   match '/login' => 'sessions#new', :as => 'login'
   match '/logout' => 'sessions#destroy', :as => 'logout'
+  match '/control' => 'application#control', :as => 'control'
 
   # Sample of named route:
   #   match 'products/:id/purchase' => 'catalog#purchase', :as => :purchase
