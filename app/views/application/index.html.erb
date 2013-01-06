@@ -40,7 +40,7 @@
       User.find( @awriting.author_id).name
     end
   %>
-<p><%= @awriting.body %></p>
+<p><%= simple_format @awriting.body %></p>
 
 <h2>Static Pages Link</h2>
 

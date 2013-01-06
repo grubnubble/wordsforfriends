@@ -15,7 +15,7 @@
 <% @writings.each do |writing| %>
   <tr>
     <td><%= writing.title %></td>
-    <td><%= writing.body %></td>
+    <td><%= simple_format writing.body %></td>
     <td><%= writing.global_r %></td>
     <td><%= writing.friends_r %></td>
     <td><%= writing.author_id %></td>
