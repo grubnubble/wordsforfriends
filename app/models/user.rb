@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
   attr_accessible :name, :email, :username, :password, :password_confirmation
   attr_accessor :password
 
-  before_save :encrypt_pass
+  before_save :encrypt_pass, :generate_email_key
 
   validates :name, :email, :username, :presence => true 
 
@@ -42,6 +42,10 @@ class User < ActiveRecord::Base
       self.password_salt = BCrypt::Engine.generate_salt
       self.pass = BCrypt::Engine.hash_secret( password, password_salt)
     end
+  end
+
+  def generate_email_key
+    self.email_key = SecureRandom.hex(16) 
   end
 
   def self.authenticate( email, password)
