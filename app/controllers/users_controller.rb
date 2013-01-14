@@ -53,6 +53,26 @@ class UsersController < ApplicationController
     end
   end
 
+  # GET /users/activate?e_k=?
+  def activate
+    if !current_user
+      redirect_to sessions_new 
+    else
+      unless @user.active
+        @user.active = true
+        if @user.save
+          flash[:notice] = "Successfully activated your user."
+          redirect_to root_path
+        else
+          flash[:error] = "Could not activate your user."
+          redirect_to root_path
+        end
+      else 
+        self.block
+      end
+    end
+  end
+
   # PUT /users/1
   # PUT /users/1.json
   def update
