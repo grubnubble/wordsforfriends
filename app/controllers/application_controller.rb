@@ -27,8 +27,12 @@ class ApplicationController < ActionController::Base
         format.html #control.html.erb
       end
     else
-      render :file => 'public/401.html', :status => :unathorized
+      self.block
     end
+  end
+
+  def block
+    render :file => 'public/401.html', :status => :unathorized
   end
 
   def current_user
