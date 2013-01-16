@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
   attr_accessible :name, :email, :username, :password, :password_confirmation
   attr_accessor :password
 
-  before_save :encrypt_pass, :generate_email_key
+  before_create :encrypt_pass, :generate_email_key
 
   validates :name, :email, :username, :presence => true 
 
@@ -28,6 +28,8 @@ class User < ActiveRecord::Base
     :length => { :in => 3..32,
       :message => 'has to be between 3 and 32 characters' }
 
+  validates_uniqueness_of :email_key
+
   validates_confirmation_of :password,
     :message => 'should match confirmation'
 
@@ -48,9 +50,10 @@ class User < ActiveRecord::Base
     self.email_key = SecureRandom.hex(16) 
   end
 
-  def self.authenticate( email, password)
+  def self.authenticate( email, password, email_key = nil)
     user = find_by_email(email)
-    if user && user.pass == BCrypt::Engine.hash_secret( password, user.password_salt)
+    if user && ( user.active || !email_key.nil? ) && 
+      user.pass == BCrypt::Engine.hash_secret( password, user.password_salt)
       user
     else
       nil

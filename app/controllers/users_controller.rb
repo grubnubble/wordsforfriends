@@ -54,21 +54,31 @@ class UsersController < ApplicationController
   end
 
   # GET /users/activate?e_k=?
+  # POST /users/activate
   def activate
-    if !current_user
-      redirect_to sessions_new 
+    @user = User.where( :email_key => params[:e_k]).first
+    unless params[:e_k] && @user
+      # couldn't find anyone with the given email_key
+      self.block
     else
-      unless @user.active
-        @user.active = true
-        if @user.save
-          flash[:notice] = "Successfully activated your user."
-          redirect_to root_path
+      if params[:password] && params[:email] && params[:e_k]
+        # user is trying to authentication themselves
+        user = User.authenticate( params[:email], params[:password], params[:e_k])
+        if user && !user.active && @user.id == user.id
+          # @user and user should be referencing the same record
+          user.active = true
+          if user.save
+            flash[:notice] = "Successfully activated your user."
+            redirect_to root_path
+          else
+            flash[:error] = "Could not activate your user."
+            redirect_to root_path
+          end
         else
-          flash[:error] = "Could not activate your user."
-          redirect_to root_path
+          # authentication failed, already active, or the user 
+          # messed with the email_key
+          flash[:error] = "Login failed.  Try again?"
         end
-      else 
-        self.block
       end
     end
   end
