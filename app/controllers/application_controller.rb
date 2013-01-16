@@ -32,7 +32,7 @@ class ApplicationController < ActionController::Base
   end
 
   def block
-    render :file => 'public/401.html', :status => :unathorized
+    render :file => 'public/401.html', :status => :unauthorized
   end
 
   def current_user
