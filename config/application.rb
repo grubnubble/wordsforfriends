@@ -61,5 +61,8 @@ module Poetry
 
     # Generators should use LESS
     config.app_generators.stylesheet_engine :less
+
+    # Setting host for ActionMailer
+    config.action_mailer.default_url_options = { :host => "localhost", :post => 3000 }
   end
 end

@@ -31,16 +31,20 @@
 
 <h2>Random Writing</h2>
 
-<h3><%= @awriting.title %></h3>
-<h4>by 
-  <%= 
-    if @awriting.author_id == 0
-      'anonymous'
-    else
-      User.find( @awriting.author_id).name
-    end
-  %>
-<p><%= simple_format @awriting.body %></p>
+<% if @writing %>
+  <h3><%= @awriting.title %></h3>
+  <h4>by 
+    <%= 
+      if @awriting.author_id == 0
+        'anonymous'
+      else
+        User.find( @awriting.author_id).name
+      end
+    %>
+  <p><%= simple_format @awriting.body %></p>
 
-<h2>Static Pages Link</h2>
+  <h2>Static Pages Link</h2>
+<% else %>
+  Couldn't find anything?
+<% end %>
 

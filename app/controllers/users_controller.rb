@@ -44,6 +44,9 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
+        # activation email
+        UserMailer.activate_email( @user).deliver
+
         format.html { redirect_to @user, notice: 'User was successfully created.' }
         format.json { render json: @user, status: :created, location: @user }
       else
@@ -53,7 +56,7 @@ class UsersController < ApplicationController
     end
   end
 
-  # GET /users/activate?e_k=?
+  # GET /users/activate?e_k=...
   # POST /users/activate
   def activate
     @user = User.where( :email_key => params[:e_k]).first
@@ -68,6 +71,9 @@ class UsersController < ApplicationController
           # @user and user should be referencing the same record
           user.active = true
           if user.save
+            # welcome user
+            UserMailer.welcome_email( @user).deliver
+
             flash[:notice] = "Successfully activated your user."
             redirect_to root_path
           else
