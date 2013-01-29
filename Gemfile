@@ -15,7 +15,6 @@ group :assets do
   gem 'coffee-rails', '~> 3.2.1'
 
   gem 'jquery-rails'
-  gem 'less-rails'
   gem 'skeleton-rails'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
