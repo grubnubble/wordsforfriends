@@ -16,6 +16,7 @@ group :assets do
 
   gem 'jquery-rails'
   gem 'less-rails'
+  gem 'skeleton-rails'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   gem 'therubyracer', :platforms => :ruby
