@@ -1,11 +1,5 @@
 class FriendshipsController < ApplicationController
 
-  def approve
-    @friendship = current_user.inverse_friendships.where( :user_id => params[:id])
-    @friendship.update_all( :approved => true)
-    redirect_to control_path
-  end
-
   def create
     @friendship = current_user.friendships.build( :friend_id => params[:friend_id])
     if @friendship.save
@@ -23,4 +17,11 @@ class FriendshipsController < ApplicationController
     flash[:notice] = "Removed friendship."
     redirect_to control_path
   end
+
+  def approve
+    @friendship = current_user.inverse_friendships.where( :user_id => params[:id])
+    @friendship.update_all( :approved => true)
+    redirect_to control_path
+  end
+
 end

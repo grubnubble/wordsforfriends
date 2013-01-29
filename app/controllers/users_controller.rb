@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+
   # GET /users
   # GET /users.json
   def index
@@ -56,39 +57,6 @@ class UsersController < ApplicationController
     end
   end
 
-  # GET /users/activate?e_k=...
-  # POST /users/activate
-  def activate
-    @user = User.where( :email_key => params[:e_k]).first
-    unless params[:e_k] && @user
-      # couldn't find anyone with the given email_key
-      self.block
-    else
-      if params[:password] && params[:email] && params[:e_k]
-        # user is trying to authentication themselves
-        user = User.authenticate( params[:email], params[:password], params[:e_k])
-        if user && !user.active && @user.id == user.id
-          # @user and user should be referencing the same record
-          user.active = true
-          if user.save
-            # welcome user
-            UserMailer.welcome_email( @user).deliver
-
-            flash[:notice] = "Successfully activated your user."
-            redirect_to root_path
-          else
-            flash[:error] = "Could not activate your user."
-            redirect_to root_path
-          end
-        else
-          # authentication failed, already active, or the user 
-          # messed with the email_key
-          flash[:error] = "Login failed.  Try again?"
-        end
-      end
-    end
-  end
-
   # PUT /users/1
   # PUT /users/1.json
   def update
@@ -116,4 +84,57 @@ class UsersController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  ### custom actions & views ###
+
+  # GET /profile
+  def profile
+    if current_user
+      @outgoing_friend_requests = Friendship.where( 
+        :user_id => current_user.id, :approved => false)
+      @incoming_friend_requests = Friendship.where( 
+        :friend_id => current_user.id, :approved => false)
+      @real_friends = Friendship.where( "(user_id = ? OR friend_id = ?) AND approved = ?",
+        current_user.id, current_user.id, true)
+
+      respond_to do |format|
+        format.html   # control.html.erb
+      end
+    else
+      self.unauthorized
+    end
+  end
+
+  # GET /users/activate?e_k=...
+  # POST /users/activate
+  def activate
+    @user = User.where( :email_key => params[:e_k]).first
+    unless params[:e_k] && @user
+      self.unauthorized   # couldn't find anyone with the given email_key
+    else
+      if params[:password] && params[:email] && params[:e_k]
+        # user is trying to authentication themselves
+        user = User.authenticate( params[:email], params[:password], params[:e_k])
+        if user && !user.active && @user.id == user.id
+          # @user and user should be referencing the same record
+          user.active = true
+          if user.save
+            # welcome user
+            UserMailer.welcome_email( @user).deliver
+
+            flash[:notice] = "Successfully activated your user."
+            redirect_to root_path
+          else
+            flash[:error] = "Could not activate your user."
+            redirect_to root_path
+          end
+        else
+          # authentication failed, already active, or the user 
+          # messed with the email_key
+          flash[:error] = "Login failed.  Try again?"
+        end
+      end
+    end
+  end
+
 end

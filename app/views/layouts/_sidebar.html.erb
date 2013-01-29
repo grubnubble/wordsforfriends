@@ -14,11 +14,11 @@
   </ul>
 </div>
 
-<% unless @latestwritings.nil? %>
+<% unless @latest_writings.nil? %>
   <div id="sidebar_recent-writings" class="sidebar">
     <h2>Latest writings</h2>
     <ul>
-      <% @latestwritings.each do |writing| %>
+      <% @latest_writings.each do |writing| %>
         <li>
           <%= link_to writing.title, writing %><br />
           <%=

@@ -24,7 +24,7 @@ Poetry::Application.routes.draw do
   match '/signup' => 'users#new', :as => 'signup'
   match '/login' => 'sessions#new', :as => 'login'
   match '/logout' => 'sessions#destroy', :as => 'logout'
-  match '/control' => 'application#control', :as => 'control'
+  match '/profile' => 'users#profile', :as => 'profile'
 
   # Sample of named route:
   #   match 'products/:id/purchase' => 'catalog#purchase', :as => :purchase
