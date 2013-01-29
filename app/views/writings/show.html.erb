@@ -1,30 +1,28 @@
-<p id="notice"><%= notice %></p>
+<% if notice %>
+  <p id="notice"><%= notice %></p>
+<% end %>
 
-<p>
-  <b>Title:</b>
-  <%= @writing.title %>
-</p>
+<h3><%= @writing.title %></h3>
 
-<p>
-  <b>Body:</b>
-  <%= simple_format @writing.body %>
-</p>
+<p><%= simple_format @writing.body %></p>
 
-<p>
-  <b>Global r:</b>
-  <%= @writing.global_r %>
-</p>
+<ul>
+  <li>
+    <% if @writing.global_r %>
+      this writing can be seen by anyone
+    <% else %>
+      this writing cannot be seen by anyone
+    <% end %>
+  </li>
+  <li>
+    <% if @writing.friends_r %>
+      this writing can be seen by friends
+    <% else %>
+      this writing cannot be seen by friends
+    <% end %>
+</ul>
 
-<p>
-  <b>Friends r:</b>
-  <%= @writing.friends_r %>
-</p>
-
-<p>
-  <b>Author:</b>
-  <%= @writing.author_id %>
-</p>
-
-
-<%= link_to 'Edit', edit_writing_path(@writing) %> |
+<% if current_user.id == @writing.author_id %>
+  <%= link_to 'Edit', edit_writing_path(@writing) %> |
+<% end %>
 <%= link_to 'Back', writings_path %>

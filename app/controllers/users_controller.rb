@@ -96,6 +96,7 @@ class UsersController < ApplicationController
         :friend_id => current_user.id, :approved => false)
       @real_friends = Friendship.where( "(user_id = ? OR friend_id = ?) AND approved = ?",
         current_user.id, current_user.id, true)
+      @writings = Writing.where( :author_id => current_user.id)
 
       respond_to do |format|
         format.html   # control.html.erb
@@ -120,7 +121,7 @@ class UsersController < ApplicationController
           user.active = true
           if user.save
             # welcome user
-            UserMailer.welcome_email( @user).deliver
+            UserMailer.welcome_email( user).deliver
 
             flash[:notice] = "Successfully activated your user."
             redirect_to root_path

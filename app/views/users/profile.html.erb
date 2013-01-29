@@ -1,42 +1,55 @@
 <h1>my profile page</h1>
 
-<h2>my profile information</h2>
-<% # ... profile stuff %>
-<%= link_to "Edit Profile" %>
-
 <h2>outgoing friend requests</h2>
-<ul>
-<% @outgoingfriendrequests.each do |outfriendrequest| %>
-  <li>
-    <%= outfriendrequest.friend_id %>
-  </li>
+<% if @outgoing_friend_requests.empty? %>
+  nothing here
+<% else %>
+  <ul>
+  <% @outgoing_friend_requests.each do |friend_request| %>
+    <li>
+      <%= friend_request.friend_id %>
+    </li>
+  <% end %>
+  </ul>
 <% end %>
-</ul>
 
 <h2>incoming friend requests</h2>
-<ul>
-<% @incomingfriendrequests.each do |infriendrequest| %>
-  <li>
-    <%= infriendrequest.user_id %><br />
-    <%= link_to "Approve", friendship_url( :id => infriendrequest.user_id) %> |
-    <%= link_to "Decline", friendships_url( :id => infriendrequest.user_id), :method => :delete %> 
-  </li>
+<% if @incoming_friend_requests.empty? %>
+  couldn't find any
+<% else %>
+  <ul>
+  <% @incoming_friend_requests.each do |friend_request| %>
+    <li>
+      <%= friend_request.user_id %><br />
+      <%= link_to "Approve", friendship_url( :id => friend_request.user_id) %> |
+      <%= link_to "Decline", friendships_url( :id => friend_request.user_id), :method => :delete %> 
+    </li>
+  <% end %>
+  </ul>
 <% end %>
-</ul>
 
 <h2>legit friends</h2>
-<ul>
-<% @realfriends.each do |realfriend| %>
-  <li>
-    <%= realfriend.user_id %> and <%= realfriend.friend_id %>
-  </li>
+<% if @real_friends.empty? %>
+  you are friendless (sorry)
+<% else %>
+  <ul>
+  <% @real_friends.each do |friend| %>
+    <li>
+      <%= friend.user_id %> and <%= friend.friend_id %>
+    </li>
+  <% end %>
+  </ul>
 <% end %>
-</ul>
 
 <h2>my writings</h2>
-<ul>
-<% @writings.each do |writing| %>
-  <li>
-    <%= writing.title %>
-  </li>
+<% if @writings.empty? %>
+  no writings yet, why don't you make one?
+<% else %>
+  <ul>
+  <% @writings.each do |writing| %>
+    <li>
+      <%= writing.title %>
+    </li>
+  <%end %>
+  </ul>
 <% end %>

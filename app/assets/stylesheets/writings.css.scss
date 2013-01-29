@@ -1,3 +1,23 @@
 // Place all the styles related to the Writings controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+ul {
+
+  list-style-type: circle;
+
+  li {
+    list-style-position: inside;
+  }
+}
+
+form.new_writing, form.edit_writing {
+
+  input:not([type="submit"]):not([type="button"]), textarea {
+    width: 100%;
+  }
+
+  input[type="checkbox"] + label {
+    display: inline-block;
+  }
+}
