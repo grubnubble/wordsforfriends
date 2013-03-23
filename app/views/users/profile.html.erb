@@ -48,7 +48,9 @@
   <ul>
   <% @writings.each do |writing| %>
     <li>
-      <%= writing.title %>
+      <%= writing.title %> | 
+      <%= link_to 'Edit', edit_writing_path(writing) %> | 
+      Remove
     </li>
   <%end %>
   </ul>
