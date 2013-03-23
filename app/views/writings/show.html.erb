@@ -6,23 +6,24 @@
 
 <p><%= simple_format @writing.body %></p>
 
-<ul>
-  <li>
-    <% if @writing.global_r %>
-      this writing can be seen by anyone
-    <% else %>
-      this writing cannot be seen by anyone
-    <% end %>
-  </li>
-  <li>
-    <% if @writing.friends_r %>
-      this writing can be seen by friends
-    <% else %>
-      this writing cannot be seen by friends
-    <% end %>
-</ul>
-
-<% if current_user.id == @writing.author_id %>
-  <%= link_to 'Edit', edit_writing_path(@writing) %> |
+<% if current_user && current_user.id == @writing.author_id %>
+  <%= link_to 'Edit', edit_writing_path(@writing) %><br />
+  <ul>
+    <li>
+      <% if @writing.global_r %>
+        this writing can be seen by anyone
+      <% else %>
+        this writing cannot be seen by anyone
+      <% end %>
+    </li>
+    <li>
+      <% if @writing.friends_r %>
+        this writing can be seen by friends
+      <% else %>
+        this writing cannot be seen by friends
+      <% end %>
+    </li>
+  </ul>
 <% end %>
+
 <%= link_to 'Back', writings_path %>

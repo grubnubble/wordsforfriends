@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   helper_method :current_user, :latest_writings
 
   def index
-    @a_writing = Writing.offset( rand( Writing.count)).first
+    @a_writing = Writing.global.offset( rand( Writing.count)).first
 
     respond_to do |format|
       format.html #index.html.erb
@@ -22,6 +22,6 @@ class ApplicationController < ActionController::Base
   end
 
   def latest_writings
-    @latest_writings = Writing.order( 'created_at DESC').limit( 10)
+    @latest_writings = Writing.global.order( 'created_at DESC').limit( 10)
   end
 end

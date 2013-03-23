@@ -5,4 +5,7 @@ class Writing < ActiveRecord::Base
 
   belongs_to :user, :foreign_key => 'author_id'
   has_and_belongs_to_many :tags, :join_table => 'writingtagjoin'
+
+  scope :global, where(:global_r => true)
+  scope :friends, where(:friends_r => true)
 end
