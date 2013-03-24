@@ -36,8 +36,10 @@ class User < ActiveRecord::Base
   has_many :writings, :dependent => :destroy
   has_many :friendships
   has_many :friends, :through => :friendships
-  has_many :inverse_friendships, :class_name => "Friendship", :foreign_key => "friend_id"
-  has_many :inverse_friends, :through => :inverse_friendships, :source => :user
+  has_many :inverse_friendships, 
+    :class_name => "Friendship", :foreign_key => "friend_id"
+  has_many :inverse_friends, 
+    :through => :inverse_friendships, :source => :user
 
   def encrypt_pass
     if password.present?
@@ -48,6 +50,10 @@ class User < ActiveRecord::Base
 
   def generate_email_key
     self.email_key = SecureRandom.hex(16) 
+  end
+
+  def relationships
+    self.find( user.friends.pluck(:id) + user.inverse_friends.pluck(:id))
   end
 
   def self.authenticate( email, password, email_key = nil)

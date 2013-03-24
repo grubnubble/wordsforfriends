@@ -4,16 +4,13 @@ class ApplicationController < ActionController::Base
   helper_method :current_user, :latest_writings
 
   def index
-    writings = []
     if current_user
-#      writings = 
-#        Writing.by_friends(current_user.friends).for_friends + 
-#        Writing.by_strangers(current_user.friends).for_strangers
-      writings = Writing.privy( current_user)
+      @a_writings = Writing.privy( current_user).
+        offset( rand( Writing.count)).first
     else
-      writings = Writing.for_strangers
+      @a_writing = Writing.for_strangers.scoped.
+        offset( rand( Writing.count)).first
     end
-    @a_writing = writings.sample 
 
     respond_to do |format|
       format.html #index.html.erb
@@ -31,6 +28,7 @@ class ApplicationController < ActionController::Base
   end
 
   def latest_writings
-    @latest_writings = Writing.for_strangers.order( 'created_at DESC').limit( 10)
+    @latest_writings = Writing.privy( current_user).
+      order( 'created_at DESC').limit( 10)
   end
 end

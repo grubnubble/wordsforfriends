@@ -22,7 +22,8 @@ class Writing < ActiveRecord::Base
       Writing.where( 
         'author_id in (:friends) and friends_r = "t"' +
         ' or author_id not in (:friends) and global_r = "t"', 
-        { :friends => ( user.friends.empty? ? '' : user.friends.pluck(:id)) })
+        { :friends => ( ( user.friends.empty? && user.inverse_friends.empty?) ? 
+          '' : user.friends.pluck(:id) + user.inverse_friends.pluck(:id)) })
     else
       Writing.for_strangers
     end
