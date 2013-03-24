@@ -55,12 +55,14 @@ module Poetry
 
     # Enable the asset pipeline
     config.assets.enabled = true
+    config.assets.paths << "#{Rails.root}/assets/fonts"
+    config.assets.precompile += %w( .svg .eot .woff .ttf )
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
 
     # Generators should use LESS
-    config.app_generators.stylesheet_engine :less
+    config.app_generators.stylesheet_engine :scss
 
     # Setting host for ActionMailer
     config.action_mailer.default_url_options = { :host => "localhost", :post => 3000 }

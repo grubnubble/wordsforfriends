@@ -1,1 +1,43 @@
+@font-face {
+  font-family: 'Libertinage';
+  src: font-url( 'Libertinage/Libertinage-z.ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Pfennig';
+  src: font-url ('Pfennig/Pfennig.ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Rose';
+  src: font-url( 'Rose/rosecaps.ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+
+// foundation
 @import "foundation_and_overrides";
+
+body {
+  padding-top: 30px;
+}
+
+#sidebar {
+  h1#title {
+    font-style: italic;
+    &:first-letter { 
+      float: left;
+      font-family: 'Rose';
+      font-size: $h1-font-size;
+      font-style: normal;
+      font-weight: normal;
+    } 
+  }
+  ul {
+    list-style-type: none;
+  }
+}
