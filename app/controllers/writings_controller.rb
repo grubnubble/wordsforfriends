@@ -1,4 +1,5 @@
 class WritingsController < ApplicationController
+
   # GET /writings
   # GET /writings.json
   def index
@@ -41,6 +42,11 @@ class WritingsController < ApplicationController
   # POST /writings.json
   def create
     @writing = Writing.new(params[:writing])
+    if current_user
+      @writing.author_id = current_user.id
+    else
+      @writing.author_id = 0
+    end
 
     respond_to do |format|
       if @writing.save
@@ -80,4 +86,5 @@ class WritingsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
 end

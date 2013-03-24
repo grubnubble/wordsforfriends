@@ -11,13 +11,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121230224845) do
+ActiveRecord::Schema.define(:version => 20130112182141) do
 
-  create_table "friendships", :force => true do |t|
-    t.integer  "user1_id"
-    t.integer  "user2_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+  create_table "friendships", :id => false, :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "friend_id"
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
+    t.boolean  "approved",   :default => false
   end
 
   create_table "tags", :force => true do |t|
@@ -31,9 +32,11 @@ ActiveRecord::Schema.define(:version => 20121230224845) do
     t.string   "username"
     t.string   "pass"
     t.string   "email"
-    t.boolean  "active"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.boolean  "active",        :default => false
+    t.datetime "created_at",                       :null => false
+    t.datetime "updated_at",                       :null => false
+    t.string   "password_salt"
+    t.string   "email_key"
   end
 
   create_table "writing_tag_joins", :force => true do |t|
@@ -46,11 +49,11 @@ ActiveRecord::Schema.define(:version => 20121230224845) do
   create_table "writings", :force => true do |t|
     t.string   "title"
     t.text     "body"
-    t.boolean  "global_r"
-    t.boolean  "friends_r"
+    t.boolean  "global_r",   :default => false
+    t.boolean  "friends_r",  :default => false
     t.integer  "author_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
   end
 
 end

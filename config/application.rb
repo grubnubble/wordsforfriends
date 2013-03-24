@@ -58,5 +58,11 @@ module Poetry
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+
+    # Generators should use LESS
+    config.app_generators.stylesheet_engine :less
+
+    # Setting host for ActionMailer
+    config.action_mailer.default_url_options = { :host => "localhost", :post => 3000 }
   end
 end

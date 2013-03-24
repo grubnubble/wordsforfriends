@@ -1,0 +1,33 @@
+<h1><%= link_to "Words with Friends", root_path %></h1>
+
+<div id="sidebar_user-menu" class="sidebar">
+  <h2>User Menu</h2>
+  <ul>
+    <% if current_user %>
+      <li><%= link_to 'My page', profile_path %></li>
+      <li><%= link_to 'Log out', logout_path %></li>
+    <% else %>
+      <li><%= link_to 'Sign up', signup_path %></li>
+      <li><%= link_to 'Log in', login_path %></li>
+    <% end %>
+      <li><%= link_to 'Write something', 'writings/new' %></li>
+  </ul>
+</div>
+
+<% unless latest_writings.nil? %>
+  <div id="sidebar_recent-writings" class="sidebar">
+    <h2>Latest writings</h2>
+    <% latest_writings.each do |writing| %>
+      <p><%= link_to writing.title, writing %></p>
+      <p>
+        <%=
+          if writing.author_id == 0
+            'anonymous'
+          else
+            User.find( writing.author_id).name
+          end
+        %>
+      </p>
+    <% end %>
+  </div>
+<% end %>

@@ -1,0 +1,13 @@
+<% if @a_writing %>
+  <h3><%= @a_writing.title %></h3>
+  <h4>by 
+    <%= 
+      if @a_writing.author_id == 0
+        'anonymous'
+      else
+        User.find( @a_writing.author_id).name
+      end
+    %>
+  <p><%= simple_format @a_writing.body %></p>
+<% end %>
+

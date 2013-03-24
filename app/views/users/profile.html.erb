@@ -1,0 +1,57 @@
+<h1>my profile page</h1>
+
+<h2>outgoing friend requests</h2>
+<% if @outgoing_friend_requests.empty? %>
+  nothing here
+<% else %>
+  <ul>
+  <% @outgoing_friend_requests.each do |friend_request| %>
+    <li>
+      <%= friend_request.friend_id %>
+    </li>
+  <% end %>
+  </ul>
+<% end %>
+
+<h2>incoming friend requests</h2>
+<% if @incoming_friend_requests.empty? %>
+  couldn't find any
+<% else %>
+  <ul>
+  <% @incoming_friend_requests.each do |friend_request| %>
+    <li>
+      <%= friend_request.user_id %><br />
+      <%= link_to "Approve", friendship_url( :id => friend_request.user_id) %> |
+      <%= link_to "Decline", friendships_url( :id => friend_request.user_id), :method => :delete %> 
+    </li>
+  <% end %>
+  </ul>
+<% end %>
+
+<h2>legit friends</h2>
+<% if @real_friends.empty? %>
+  you are friendless (sorry)
+<% else %>
+  <ul>
+  <% @real_friends.each do |friend| %>
+    <li>
+      <%= friend.user_id %> and <%= friend.friend_id %>
+    </li>
+  <% end %>
+  </ul>
+<% end %>
+
+<h2>my writings</h2>
+<% if @writings.empty? %>
+  no writings yet, why don't you make one?
+<% else %>
+  <ul>
+  <% @writings.each do |writing| %>
+    <li>
+      <%= writing.title %> | 
+      <%= link_to 'Edit', edit_writing_path(writing) %> | 
+      Remove
+    </li>
+  <%end %>
+  </ul>
+<% end %>
