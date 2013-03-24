@@ -4,13 +4,9 @@ class ApplicationController < ActionController::Base
   helper_method :current_user, :latest_writings
 
   def index
-    if current_user
-      @a_writings = Writing.privy( current_user).
-        offset( rand( Writing.count)).first
-    else
-      @a_writing = Writing.for_strangers.scoped.
-        offset( rand( Writing.count)).first
-    end
+    @a_writing = current_user ? 
+      ( Writing.privy( current_user)).sample :
+      ( Writing.for_strangers).sample
 
     respond_to do |format|
       format.html #index.html.erb

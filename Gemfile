@@ -7,7 +7,6 @@ gem 'rails', '3.2.9'
 
 gem 'sqlite3'
 
-
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
@@ -21,6 +20,8 @@ group :assets do
   gem 'therubyracer', :platforms => :ruby
 
   gem 'uglifier', '>= 1.0.3'
+
+  gem 'zurb-foundation', '~> 4.0.0'
 end
 
 gem 'minitest' # fixing a ruby 1.9.3/fedora bug
