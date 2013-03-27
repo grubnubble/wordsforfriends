@@ -19,25 +19,92 @@
   font-style: normal;
 }
 
+$baseline: 24px;
+
 // foundation
 @import "foundation_and_overrides";
 
 body {
-  padding-top: 30px;
+  line-height: $baseline;
+  padding-top: $baseline*2; 
 }
+
+h1, h2, h3, h4, h5, h6 {
+  line-height: $baseline*2;
+}
+
+h1 { 
+  font-size: 48px; 
+  margin-bottom: 16px;
+  margin-top: 32px;
+}
+h2 { 
+  font-size: 36px; 
+  margin-bottom: 12px;
+  margin-top: 36px; 
+}
+h3 { font-size: 28px; }
+h4 { font-size: 24px; }
+h5 { font-size: 18px; }
+h6 { font-size: 18px; }
+
+p { margin-top: 18px; }
 
 #sidebar {
   h1#title {
     font-style: italic;
+    font-size: 48px;
     &:first-letter { 
       float: left;
       font-family: 'Rose';
-      font-size: $h1-font-size;
+      font-size: 88px; 
       font-style: normal;
       font-weight: normal;
     } 
   }
-  ul {
-    list-style-type: none;
+  #sidebar-content {
+    margin-left: 2em;
+    ul {
+      list-style-type: none;
+    }
+    #user-menu {
+      ul {
+        font-family: $header-font-family;
+        font-size: 28px;
+        li {
+          line-height: 30px;
+          margin-top: 16px;
+          &:not(:first-child) {
+            margin-top: 18px;
+          }
+        }
+      }
+    }
+    #recent-writings {
+      margin-top: $baseline*2;
+      .writing-title {
+        margin-bottom: 0;
+      }
+      .writing-author {
+        margin-top: 0;
+      }
+    }
+    footer {
+      margin-top: $baseline*2;
+    }
   }
+}
+
+#main {
+  #content {
+    h2 { font-style: normal; }
+  }
+}
+
+.writing-title {
+  font-style: italic;
+}
+
+.writing-author {
+
 }

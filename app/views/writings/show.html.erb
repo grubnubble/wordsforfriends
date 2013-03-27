@@ -2,9 +2,19 @@
   <p id="notice"><%= notice %></p>
 <% end %>
 
-<h3><%= @writing.title %></h3>
+<h2 class="writing-title"><%= @writing.title %></h2>
 
-<p><%= simple_format @writing.body %></p>
+<p class="writing-author">by
+  <%=
+    if @writing.author_id == 0
+      'anonymous'
+    else
+      User.find( @writing.author_id).name
+    end
+  %>
+</p>
+
+<div class="writing-content"><%= simple_format @writing.body %></div>
 
 <% if current_user && current_user.id == @writing.author_id %>
   <%= link_to 'Edit', edit_writing_path(@writing) %><br />

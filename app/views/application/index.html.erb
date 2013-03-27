@@ -1,6 +1,6 @@
 <% if @a_writing %>
-  <h3><%= @a_writing.title %></h3>
-  <h4>by 
+  <h2 class="writing-title"><%= @a_writing.title %></h2>
+  <p class="writing-author">by 
     <%= 
       if @a_writing.author_id == 0
         'anonymous'
@@ -8,6 +8,7 @@
         User.find( @a_writing.author_id).name
       end
     %>
-  <p><%= simple_format @a_writing.body %></p>
+  </p>
+  <div class="writing-content"><%= simple_format @a_writing.body %></div>
 <% end %>
 
