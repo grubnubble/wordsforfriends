@@ -15,8 +15,6 @@
 
     <title<%= content_for?(:title) ? yield(:title) : "Words with Friends" %></title>
 
-    <link rel="stylesheet" href="http://basehold.it/24">
-
     <%= stylesheet_link_tag "application", :media => "all" %>
     <%= javascript_include_tag "vendor/custom.modernizr" %>
     <%= csrf_meta_tags %>

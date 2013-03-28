@@ -1,0 +1,57 @@
+<% content_for :page_title do %>About<% end %>
+
+<% content_for :page_content do %>
+  <p>
+  Hello! I'm glad you've pointed your browser to "Words with Friends" and 
+  moreso that you would want to learn more about it.
+  </p>
+  This project was meant to be very simple. I created it to share any kind of
+  writing or literature, original or otherwise, with my friends; many of whom
+  either have revealed to me their love of penning poetry or prose, or have
+  expressed a mutual affinity for digesting the written word. 
+  </p>
+  <p>
+  It also served as a learning experience for creating projects under the 
+  <%= link_to "Ruby on Rails", "http://rubyonrails.org/" %> web application
+  framework, which I found to be particularly interesting and quirky, and
+  not always in a bad way. 
+  </p>
+  <p>
+  If you would like to view or retrieve the source that is powering the
+  website's design and functions, you can do so from 
+  <%= link_to "the project's repository.", 
+    "https://github.com/spacez320/writingapp" %>
+  </p>
+  <p>
+  Fonts used on this website were mostly taken from 
+  the <%= link_to "Open Font Library", "http://openfontlibrary.org" %> 
+  and their authors are accredited below.
+  <ul>
+    <li>
+    <%= link_to "Libertinage", "http://openfontlibrary.org/en/font/libertinage" %>
+    by <%= link_to "OSP", "http://osp.constantvzw.org/blog/" %>
+    </li>
+    <li>
+    <%= link_to "Pfennig", "http://openfontlibrary.org/en/font/pfennig" %> 
+    by <%= link_to "Daniel Johnson", 
+      "http://openfontlibrary.org/en/member/danielj" %>
+    </li>
+    <li>
+    <%= link_to "RoseCaps", "http://www.abstractfonts.com/font/4105" %>.
+    by someone mysterious
+    </li>
+  </ul>
+  </p>
+  <p>
+  This website's code-base is licensed under the 
+  <%= link_to "GNU General Public License, vr. 3", 
+    "https://www.gnu.org/licenses/gpl" %>
+  and copyright to its author.
+  </p>
+  <p>
+  Entries of content are copyrighted to their respectful owners and are
+  subject to no particular license unless stated otherwise.
+  </p>
+<% end %>
+
+<%= render :template => 'pages/page' %>
