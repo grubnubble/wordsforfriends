@@ -1,0 +1,61 @@
+<% content_for :page_title do %>FAQ<% end %>
+
+<% content_for :page_content do %>
+  <p>
+  These questions haven't really been "frequently asked" (sorry to mislead),
+  but these might answer some anticipated questions.
+  </p>
+  <ul id="faq">
+    <li>
+      How do you write something?
+      <p>Just click the "write something" link on the left.</p>
+    </li>
+    <li>
+      How do I sign-up?
+      <p>
+        Clicking the "sign-up" link on the left gets you started. In order to
+        confirm it really is you registering, and not just any monkey with a
+        typewriter,  the website will send you a confirmation email with
+        further instructions. Standard practice.
+      </p>
+    </li>
+    <li>
+      Why should I sign-up?
+      <p>
+        Signing-up reserves a unique username by which you can attribute your
+        writings. It also lets you maintain writings you want to post anonymously.
+      </p>
+    </li>
+    <li>
+      Can I write anonymously?
+      <p>
+      Yes, you can create a writing while you're unregistered/ signed-out, but
+      it should be noted that you have no further control over the writing after
+      it is saved. Alternatively, you can create writings while you're signed-in
+      and mark them to post anonymously.
+      </p>
+    </li>
+    <li>
+      Can I control who sees my writings?
+      <p>
+      To a degree. If you are registered, you can add other users as 'friends.'
+      Each writing you create can be marked viewable by the world (or not) and
+      viewable by your friends (or not). Anonymous writings are globally viewable
+      by default if they are created without signing-up/ in.
+      </p>
+      <p>
+      It should be noted that these permissions are strict in their definition.
+      If you mark a writing "globally hidden" and "friend viewable," only your
+      friends will be able to see the writing. If you make a writing "globally
+      viewable" and "friend hidden," everyone except your friends will be able
+      to see the writing.
+      </p>
+    </li>
+    <li>
+      Can I ask another question?
+      <p>Of course, feel free to email me: logical-dot-zero-at-gmail-dot-com.</p>
+    </li>
+  </ul>
+<% end %>
+
+<%= render :template => 'pages/page' %>
