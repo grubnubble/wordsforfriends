@@ -1,0 +1,26 @@
+<% content_for :page_title do %>Contact<% end %>
+
+<% content_for :page_content do %>
+  <p>
+  For general inqueries, you are welcome to use the form below to send
+  feedback/ suggestions/ concerns/ questions/ witty banter to me. Messages go
+  directly to my email: logical-dot-zero-at-gmail-dot-com (which you are
+  welcome to use as well).
+  </p>
+  <p>If you wish to file a bug report for the site, you can do so through
+  <%= link_to "Github's issue tracker", 
+    "https://github.com/spacez320/writingapp/issues" %>.
+  </p>
+  <%= form_tag do %>
+    <%= label_tag( :subject, "Message subject:") %>
+    <%= text_field_tag( :subject) %>
+    <%= label_tag( :from, "Where to send a reply (if you want one):") %>
+    <%= email_field( :from, :address) %>
+    <%= label_tag( :message, "Your wonderful, much anticipated message:") %>
+    <%= text_area_tag( :message, 
+      "Are thou calling my mother a pox-ridden wench?") %>
+    <%= submit_tag( "Anchors ahoy!") %>
+  <% end %>
+<% end %>
+
+<%= render :template => 'pages/page' %>
