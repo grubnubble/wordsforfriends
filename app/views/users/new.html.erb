@@ -1,9 +1,9 @@
-<h1>Sign up</h1>
+<h2>Sign up</h2>
 
 <%= form_for @user do |f| %>
   <% if @user.errors.any? %>
     <div class="error">
-      <h2>Something went wrong</h2>
+      <p>Some things went astray:</p>
       <ul>
         <% for message in @user.errors.full_messages %>
           <li><%= message %></li>
@@ -12,26 +12,24 @@
     </div>
   <% end %>
   <p>
-    <%= f.label :name %><br />
+    <%= f.label :name %>
     <%= f.text_field :name %>
   </p>
   <p>
-    <%= f.label :username %><br />
+    <%= f.label :username %>
     <%= f.text_field :username %>
   </p>
   <p>
-    <%= f.label :email %><br />
+    <%= f.label :email %>
     <%= f.text_field :email %>
   </p>
   <p>
-    <%= f.label :password %><br />
+    <%= f.label :password %>
     <%= f.password_field :password %>
   </p>
   <p>
-    <%= f.label :password_confirmation %><br />
+    <%= f.label :password_confirmation %>
     <%= f.password_field :password_confirmation %>
   </p>
   <p class="button"><%= f.submit "Sign up" %></p>
 <% end %>
-
-<%= link_to 'Back', root_path %> 

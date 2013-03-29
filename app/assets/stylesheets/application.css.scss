@@ -50,6 +50,14 @@ h6 { font-size: 18px; }
 
 p { margin-top: 18px; }
 
+.error {
+  ul {
+    li {
+      font-style: italic;
+    }
+  }
+}
+
 #sidebar {
   h1#title {
     font-style: italic;

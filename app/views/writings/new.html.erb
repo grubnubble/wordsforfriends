@@ -1,4 +1,4 @@
-<h1>New writing</h1>
+<h2>New writing</h2>
 
 <% if current_user %>
   <% # logged in %>
@@ -6,13 +6,13 @@
 <% else %>
   <% # anonymous %>
   <p>
-    You are currently not logged in.  Note that if you save this writing
-    anonymously, you won't be able to edit it later, and your writing will
-    be world viewable. <%= link_to 'Log in', login_path %>
+    You are currently not logged in, but that shouldn't stop you from creating
+    a writing!
+  <p>
+    Do note, however, that if you save this writing anonymously, you won't be
+    able to edit it later on, and your writing will be world viewable.  
+    You can also <%= link_to 'log in', login_path %> if you like.
   </p>
 <% end %>
 
 <%= render 'form' %>
-
-<%= link_to 'Back', writings_path %>
-<%= link_to 'Home', root_path %>
