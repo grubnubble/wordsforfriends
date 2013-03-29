@@ -8,6 +8,9 @@ gem 'rails', '3.2.9'
 # Use sqlite3 for dev/testing, use postgresql for production
 group :development, :test do
   gem 'sqlite3'
+
+  # See https://github.com/sstephenson/execjs#readme for more supported runtimes
+  gem 'therubyracer', :platforms => :ruby
 end
 
 group :production do
@@ -21,10 +24,6 @@ group :assets do
   gem 'coffee-rails', '~> 3.2.1'
 
   gem 'jquery-rails'
-  gem 'skeleton-rails'
-
-  # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-  gem 'therubyracer', :platforms => :ruby
 
   gem 'uglifier', '>= 1.0.3'
 
