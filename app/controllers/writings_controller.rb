@@ -46,6 +46,7 @@ class WritingsController < ApplicationController
       @writing.author_id = current_user.id
     else
       @writing.author_id = 0
+      @writing.global_r = true
     end
 
     respond_to do |format|
