@@ -1,57 +1,74 @@
-<h1>my profile page</h1>
+<h2>your page</h2>
 
-<h2>outgoing friend requests</h2>
-<% if @outgoing_friend_requests.empty? %>
-  nothing here
-<% else %>
-  <ul>
-  <% @outgoing_friend_requests.each do |friend_request| %>
-    <li>
-      <%= friend_request.friend_id %>
-    </li>
-  <% end %>
-  </ul>
-<% end %>
+<ul id="profile">
+  <li>outgoing friend requests
+    <p>
+      <% if @outgoing_friend_requests.empty? %>
+        <ul><li>nothing here</li></ul>
+      <% else %>
+        <ul>
+        <% @outgoing_friend_requests.each do |friend_request| %>
+          <li>
+            <%= friend_request.friend_id %>
+          </li>
+        <% end %>
+        </ul>
+      <% end %>
+    </p>
+  </li>
 
-<h2>incoming friend requests</h2>
-<% if @incoming_friend_requests.empty? %>
-  couldn't find any
-<% else %>
-  <ul>
-  <% @incoming_friend_requests.each do |friend_request| %>
-    <li>
-      <%= friend_request.user_id %><br />
-      <%= link_to "Approve", friendship_url( :id => friend_request.user_id) %> |
-      <%= link_to "Decline", friendships_url( :id => friend_request.user_id), :method => :delete %> 
-    </li>
-  <% end %>
-  </ul>
-<% end %>
+  <li>incoming friend requests
+    <p>
+      <% if @incoming_friend_requests.empty? %>
+        <ul><li>couldn't find any</li></ul>
+      <% else %>
+        <ul>
+        <% @incoming_friend_requests.each do |friend_request| %>
+          <li>
+            <%= friend_request.user_id %><br />
+            <%= link_to "Approve", friendship_url( :id => friend_request.user_id) %> |
+            <%= link_to "Decline", friendships_url( :id => friend_request.user_id), :method => :delete %> 
+          </li>
+        <% end %>
+        </ul>
+      <% end %>
+    </p>
+  </li>
 
-<h2>legit friends</h2>
-<% if @real_friends.empty? %>
-  you are friendless (sorry)
-<% else %>
-  <ul>
-  <% @real_friends.each do |friend| %>
-    <li>
-      <%= friend.user_id %> and <%= friend.friend_id %>
-    </li>
-  <% end %>
-  </ul>
-<% end %>
+  <li>legit friends
+    <p>
+      <% if @real_friends.empty? %>
+        <ul><li>you are friendless (sorry)</li></ul>
+      <% else %>
+        <ul>
+        <% @real_friends.each do |friend| %>
+          <li>
+            <%= friend.username %>
+          </li>
+        <% end %>
+        </ul>
+      <% end %>
+    </p>
+  </li>
 
-<h2>my writings</h2>
-<% if @writings.empty? %>
-  no writings yet, why don't you make one?
-<% else %>
-  <ul>
-  <% @writings.each do |writing| %>
-    <li>
-      <%= writing.title %> | 
-      <%= link_to 'Edit', edit_writing_path(writing) %> | 
-      Remove
-    </li>
-  <%end %>
-  </ul>
-<% end %>
+  <li>my writings
+    <p>
+      <% if @writings.empty? %>
+        <ul><li>no writings yet, why don't you 
+          <%= link_to 'make one', new_writing_path %>?</li></ul>
+      <% else %>
+        <ul>
+        <% @writings.each do |writing| %>
+          <li>
+            <%= writing.title %><br /> 
+            <%= link_to 'View', writing %>&nbsp;or&nbsp;
+            <%= link_to 'Edit', edit_writing_path(writing) %>&nbsp;or&nbsp; 
+            <%= link_to 'Remove', edit_writing_path(writing) %>
+          </li>
+        <%end %>
+        </ul>
+      <% end %>
+    </p>
+  </li>
+
+</ul>

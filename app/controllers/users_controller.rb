@@ -94,8 +94,10 @@ class UsersController < ApplicationController
         :user_id => current_user.id, :approved => false)
       @incoming_friend_requests = Friendship.where( 
         :friend_id => current_user.id, :approved => false)
-      @real_friends = Friendship.where( "(user_id = ? OR friend_id = ?) AND approved = ?",
-        current_user.id, current_user.id, true)
+      # @real_friends = Friendship.where( "(user_id = ? OR friend_id = ?) AND approved = ?",
+      #   current_user.id, current_user.id, true)
+      @real_friends = current_user.friends + current_user.inverse_friends
+
       @writings = Writing.where( :author_id => current_user.id)
 
       respond_to do |format|
