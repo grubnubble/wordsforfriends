@@ -1,0 +1,42 @@
+<% content_for :page_title do %>Legal<% end %>
+
+<% content_for :page_content do %>
+  <p>Just a few "legal things" or whatever.</p>
+  <p>
+  This site's code-base is copyrighted to its author and is licensed under the
+  <%= link_to "GNU General Public License, vr. 3",
+    "https://www.gnu.org/licenses/gpl" %>. You can view the full text of this
+  license <%= link_to "here", "https://www.gnu.org/licenses/gpl-3.0.txt" %>.
+  </p>
+  <p>
+  Writings on this site are copyrighted to their respective authors and should
+  be considered unlicensed work, unless stated otherwise.
+  </p>
+  <p>
+  This site collects personal information and stores it for user identification
+  purposes. It does not in any way sell, provide, or otherwise allow access to
+  this information to any party, unless legally obligated to do so.
+  </p>
+  <p>
+  Content uploaded to this website that is considered openly slanderous to
+  another individual or group in that it could be recognized as "hate speech"
+  will be removed. Further offenses may result in efforts taken to prevent the
+  author from using the site. I realize that this definition is very loose, but
+  the point is to prevent writings from being used as a method of harassment,
+  or other form of targeted attack.
+  </p>
+  <p>
+  Content created through this website is only used for the sake of display
+  on this website. Deleted content will be permanently removed. If a user
+  requests their account deleted, content associated with their account will 
+  be permanently removed, along with any collected account information.
+  <p>
+  This website uses 'session' data that can persist an individual's browsing
+  data between pages for the sake of convenience. This website does not use
+  cookies and does not persist information after a session has ended. This
+  website does not store location or connection-oriented identification
+  information.
+  </p>
+<% end %>
+
+<%= render :template => 'pages/page' %>
