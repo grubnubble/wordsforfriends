@@ -11,7 +11,7 @@
   <%= link_to "Github's issue tracker", 
     "https://github.com/spacez320/writingapp/issues" %>.
   </p>
-  <%= form_tag do %>
+  <%= form_tag( "/pages/contact", :method => "post") do %>
     <%= label_tag( :subject, "Message subject:") %>
     <%= text_field_tag( :subject) %>
     <%= label_tag( :from, "Where to send a reply (if you want one):") %>

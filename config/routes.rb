@@ -26,6 +26,8 @@ Poetry::Application.routes.draw do
   match '/logout' => 'sessions#destroy', :as => 'logout'
   match '/profile' => 'users#profile', :as => 'profile'
 
+  post '/pages/contact'
+  match '/pages/:page' => 'pages#show' 
   match '/:page' => 'pages#show'
 
   # Sample of named route:
