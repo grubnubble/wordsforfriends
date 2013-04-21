@@ -1,5 +1,5 @@
 class UserMailer < ActionMailer::Base
-  default from: "no-reply@wordsforfriends.com"
+  # default from: "no-reply@wordsforfriends.com"
 
   def activate_email( user)
     @url = url_for :controller => "users", :action => "activate", :e_k => user.email_key
