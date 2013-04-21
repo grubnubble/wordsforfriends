@@ -31,5 +31,13 @@
     <%= f.label :password_confirmation %>
     <%= f.password_field :password_confirmation %>
   </p>
-  <p class="button"><%= f.submit "Sign up" %></p>
+  <p><%= 
+    f.submit([ 
+        "Sign me up, cap'n.",
+        "Better get this over with.",
+        "What have I got to lose, (beyond my dignity)?",
+        "Monkey click the button now.",
+        "Who dares, wins."
+      ].sample)
+  %></p>
 <% end %>
