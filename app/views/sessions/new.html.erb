@@ -10,6 +10,16 @@
     <%= label_tag :password %>
     <%= password_field_tag :password %>
   </p>
-  <p class="button"><%= submit_tag "Log in" %></p>
+  <p>
+    <%= 
+      submit_tag([
+          "Right this way, then.", 
+          "Aye, aye cap'n!", 
+          "What are we waiting for?", 
+          "I solemnly swear that I am up to no good.",
+          "Let's do this."
+        ].sample) 
+    %>
+  </p>
 
 <% end %>

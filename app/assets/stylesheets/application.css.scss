@@ -48,6 +48,17 @@ h4 { font-size: 24px; }
 h5 { font-size: 18px; }
 h6 { font-size: 18px; }
 
+input {
+  &[type="button"], &[type="submit"] {
+    background: transparent;
+    border: 0;    
+    cursor: pointer;
+    font-family: $body-font-family; 
+    font-size: $em-base;
+    padding: 0;
+  }
+}
+
 p { margin-top: 18px; }
 
 .error {
