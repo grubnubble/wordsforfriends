@@ -39,6 +39,7 @@ blockquote {
 
 body {
   line-height: $baseline;
+  padding-top: $baseline;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -130,8 +131,14 @@ p { margin-top: 18px; }
 }
 
 #main {
+  #status {
+    height: 72px;
+    width: 100%;
+    h5#flash_notice {
+      margin-bottom: 0;
+    }
+  }
   #content {
-    margin-top: $baseline;
     a { font-style: italic; }
     h2 { font-style: normal; }
     ul { 
@@ -141,15 +148,11 @@ p { margin-top: 18px; }
         list-style-position: inside;
       }
     }
+    .writing-title {
+      font-style: italic;
+      margin-top: 0;
+    }
   }
-}
-
-.writing-title {
-  font-style: italic;
-}
-
-.writing-author {
-
 }
 
 textarea#writing_body {
