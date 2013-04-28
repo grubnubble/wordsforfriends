@@ -53,6 +53,21 @@
       logging-out and posting it anonymously.
       </p>
     </blockquote>
+  <% else %>
+    <blockquote>
+      <p>
+        You are currently not logged in, but that shouldn't stop you from 
+        creating a writing!
+      </p>
+      <p>
+        Do note, however, that if you save this writing anonymously, you will
+        not be able to edit it later on, and your writing will be viewable by
+        everyone.
+      </p>
+      <p>
+        You can also <%= link_to 'log in', login_path %> if you like.
+      </p>
+    </blockquote>
   <% end %>
   <div class="actions">
     <%= 
