@@ -23,7 +23,7 @@
     <div class="field">
       <div class="row">
         <div class="large-1 columns">
-          <%= f.check_box :global_r %>
+          <%= f.check_box :global_r, { :checked => "checked" } %>
         </div>
         <div class="large-11 columns">
           <%= f.label :global_r, "This writing should be globally viewable." %>
@@ -32,7 +32,7 @@
     <div class="field">
       <div class="row">
         <div class="large-1 columns">
-          <%= f.check_box :friends_r %>
+          <%= f.check_box :friends_r, { :checked => "checked" } %>
         </div>
         <div class="large-11 columns">
           <%= f.label :friends_r, "This writing should be seen by friends." %>
@@ -45,15 +45,23 @@
       Writings marked <em>globally viewable</em> and <em>friend
         un-viewable</em> will, indeed, be viewable by everyone except your
       friends. This also means, however, that your friends could potentially
-      log-out and view these writings. 
+      log-out and view these writings, giving them an avenue to deduce that 
+      you are the author (elementary, my dear).
       </p>
       <p>
-      TL;DR: If you don't want friends to view this writing, consider
+      TL;DR: If you don't want friends to know you wrote this, consider 
       logging-out and posting it anonymously.
       </p>
     </blockquote>
   <% end %>
   <div class="actions">
-    <%= f.submit %>
+    <%= 
+      f.submit([
+        "I present my gift to the internet.",
+        "A masterpiece...to my mother.",
+        "Well, that's as good as it's going to get.",
+        "My magnum opus is complete."
+      ].sample)
+    %>
   </div>
 <% end %>
