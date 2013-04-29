@@ -1,25 +1,13 @@
-<p id="notice"><%= notice %></p>
+<h2><%= @user.name %></h2>
 
 <p>
-  <b>Name:</b>
-  <%= @user.name %>
+  <ul>
+  <% if @writings.empty? %>
+    <li>no writings yet</li>
+  <% else %>
+    <% @writings.each do |writing| %>
+      <li><%= link_to writing.title, writing %></li>
+    <% end %>
+  <% end %>
+  </ul>
 </p>
-
-<p>
-  <b>Username:</b>
-  <%= @user.username %>
-</p>
-
-<p>
-  <b>Email:</b>
-  <%= @user.email %>
-</p>
-
-<p>
-  <b>Confirmed:</b>
-  <%= @user.active %>
-</p>
-
-
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
