@@ -1,39 +1,41 @@
 <h1 id="title"><%= link_to "Words for friends", root_path %></h1>
 
 <div id="sidebar-content">
-  <div id="user-menu"> 
-    <ul>
-      <% if current_user %>
-        <li><%= link_to 'my page', profile_path %></li>
-        <li><%= link_to 'log-out', logout_path %></li>
-      <% else %>
-        <li><%= link_to 'sign-up', signup_path %></li>
-        <li><%= link_to 'log-in', login_path %></li>
-      <% end %>
-      <li><%= link_to 'write something', 
-        :controller => "writings", :action => "new" %></li>
-    </ul>
+  <div class="sidebar-section">
+    <div id="user-menu"> 
+      <ul>
+        <% if current_user %>
+          <li><%= link_to 'my page', profile_path %></li>
+          <li><%= link_to 'log-out', logout_path %></li>
+        <% else %>
+          <li><%= link_to 'sign-up', signup_path %></li>
+          <li><%= link_to 'log-in', login_path %></li>
+        <% end %>
+        <li><%= link_to 'write something', 
+          :controller => "writings", :action => "new" %></li>
+      </ul>
+    </div>
+
+    <% unless latest_writings.nil? %>
+      <div id="recent-writings"> 
+        <% latest_writings.each do |writing| %>
+          <p class="writing-title"><%= link_to writing.title, writing %></p>
+          <p class="writing-author">
+            <%=
+              if writing.author_id == 0
+                'anonymous'
+              else
+                user = User.find( writing.author_id)
+                link_to user.name, user
+              end
+            %>
+          </p>
+        <% end %>
+      </div>
+    <% end %>
   </div>
 
-  <% unless latest_writings.nil? %>
-    <div id="recent-writings"> 
-      <% latest_writings.each do |writing| %>
-        <p class="writing-title"><%= link_to writing.title, writing %></p>
-        <p class="writing-author">
-          <%=
-            if writing.author_id == 0
-              'anonymous'
-            else
-              user = User.find( writing.author_id)
-              link_to user.name, user
-            end
-          %>
-        </p>
-      <% end %>
-    </div>
-  <% end %>
-
-  <footer class="row">
+  <footer class="sidebar-section">
     <div id="footer-menu">
       <%= link_to "About", "/about" %>&nbsp;-&nbsp;
       <%= link_to "FAQ", "/faq" %>&nbsp;-&nbsp;

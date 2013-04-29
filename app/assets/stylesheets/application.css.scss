@@ -98,31 +98,34 @@ p { margin-top: 18px; }
     } 
   }
   #sidebar-content {
-    margin-left: 2em;
     ul {
       list-style-type: none;
     }
-    #user-menu {
-      ul {
-        font-family: $header-font-family;
-        font-size: 28px;
-        li {
-          line-height: 30px;
-          margin-top: 16px;
-          &:not(:first-child) {
-            margin-top: 18px;
+    div.sidebar-section {
+      border-left: 1px solid #ddd;
+      padding-left: 2em;
+      #user-menu {
+        ul {
+          font-family: $header-font-family;
+          font-size: 28px;
+          li {
+            line-height: 30px;
+            margin-top: 16px;
+            &:not(:first-child) {
+              margin-top: 18px;
+            }
           }
         }
       }
-    }
-    #recent-writings {
-      margin-top: $baseline*2;
-      .writing-title {
-        font-style: italic;
-        margin-bottom: 0;
-      }
-      .writing-author {
-        margin-top: 0;
+      #recent-writings {
+        margin-top: $baseline*2;
+        .writing-title {
+          font-style: italic;
+          margin-bottom: 0;
+        }
+        .writing-author {
+          margin-top: 0;
+        }
       }
     }
     footer {
