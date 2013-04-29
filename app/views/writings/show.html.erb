@@ -13,8 +13,7 @@
 <div class="writing-content"><%= simple_format @writing.body %></div>
 
 <% if current_user && current_user.id == @writing.author_id %>
-  <%= link_to 'Edit', edit_writing_path(@writing) %><br />
-  <p>
+  <blockquote>
     this writing can be seen
     <% if @writing.global_r %>
       by everyone<% if !@writing.friends_r %> except friends<% end %>
@@ -23,5 +22,6 @@
     <% else %>
       by nobody
     <% end %>
-  </p>
+  </blockquote>
+  <%= link_to 'Edit', edit_writing_path(@writing) %><br />
 <% end %>
