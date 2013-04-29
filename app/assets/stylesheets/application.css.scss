@@ -118,6 +118,7 @@ p { margin-top: 18px; }
     #recent-writings {
       margin-top: $baseline*2;
       .writing-title {
+        font-style: italic;
         margin-bottom: 0;
       }
       .writing-author {

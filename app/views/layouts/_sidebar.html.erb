@@ -24,7 +24,8 @@
             if writing.author_id == 0
               'anonymous'
             else
-              User.find( writing.author_id).name
+              user = User.find( writing.author_id)
+              link_to user.name, user
             end
           %>
         </p>
