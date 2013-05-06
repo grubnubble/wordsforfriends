@@ -10,7 +10,7 @@ group :development, :test do
   gem 'sqlite3'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-  gem 'therubyracer', :platforms => :ruby
+  gem 'therubyracer', '~> 0.11.4', :platforms => :ruby
 end
 
 group :production do
