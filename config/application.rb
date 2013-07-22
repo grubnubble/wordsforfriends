@@ -65,6 +65,6 @@ module Poetry
     config.app_generators.stylesheet_engine :scss
 
     # Setting host for ActionMailer
-    config.action_mailer.default_url_options = { :host => "localhost", :post => 3000 }
+    config.action_mailer.default_url_options = { :host => "wordsforfriends.herokuapp.com", :post => 3000 }
   end
 end
