@@ -8,6 +8,7 @@ class UserMailer < ActionMailer::Base
 
   def welcome_email( user)
     @url = url_for :controller => "sessions", :action => "new" 
+    @user = user
     mail :to => user.email, :subject => "Consider yourself 'activated.'"
   end
 end
