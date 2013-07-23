@@ -124,7 +124,7 @@ class UsersController < ApplicationController
 
             login_path = url_for :controller => 'sessions', :action => 'new'
             flash[:notice] = "Successfully activated your user. Now you can "+
-              "<a href=\""+login_path+"\">log in</a>!"
+              '<a href="'+login_path+'">log in</a>!"'.html_safe
             redirect_to root_path
           else
             flash[:error] = "Something went terribly wrong and we couldn't activate you."
