@@ -122,10 +122,12 @@ class UsersController < ApplicationController
             # welcome user
             UserMailer.welcome_email( user).deliver
 
-            flash[:notice] = "Successfully activated your user."
+            login_path = url_for :controller => 'sessions', :action => 'new'
+            flash[:notice] = "Successfully activated your user. Now you can "+
+              "<a href=\""+login_path+"\">log in</a>!"
             redirect_to root_path
           else
-            flash[:error] = "Could not activate your user."
+            flash[:error] = "Something went terribly wrong and we couldn't activate you."
             redirect_to root_path
           end
         else
