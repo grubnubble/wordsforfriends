@@ -18,9 +18,10 @@ class Writing < ActiveRecord::Base
   }
 
   def self.privy( user)
-    if user
+    if user && !user.friends.empty?
+
       Writing.where( 
-        'author_id in (:friends) and friends_r = "t"' +
+        "author_id in (:friends) and friends_r = 't'" +
         ' or author_id not in (:friends) and global_r = "t"', 
         { :friends => ( ( user.friends.empty? && user.inverse_friends.empty?) ? 
           '' : user.friends.pluck(:id) + user.inverse_friends.pluck(:id)) })
